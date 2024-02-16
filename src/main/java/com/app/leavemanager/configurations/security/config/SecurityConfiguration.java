@@ -54,7 +54,7 @@ public class SecurityConfiguration {
                                 .requestMatchers(
                                         HttpMethod.POST,
                                         "/holiday"
-                                ).hasAuthority(Scope.EMPLOYEE.name())
+                                ).hasAnyAuthority(Scope.SUPER_ADMIN.name(), Scope.ADMIN.name(), Scope.EMPLOYEE.name())
                                 .requestMatchers(
                                         HttpMethod.POST,
                                         "/holiday/type"
@@ -86,8 +86,17 @@ public class SecurityConfiguration {
                                 ).hasAuthority(Scope.EMPLOYEE.name())
                                 .requestMatchers(
                                         HttpMethod.POST,
+                                        "/holiday/type",
                                         "/config/holiday"
                                 ).hasAuthority(Scope.SUPER_ADMIN.name())
+                                .requestMatchers(
+                                        HttpMethod.PUT,
+                                        "/employee/{employeeId}"
+                                ).hasAuthority(Scope.EMPLOYEE.name())
+                                .requestMatchers(
+                                        HttpMethod.DELETE,
+                                        "/employee/{employeeId}"
+                                ).hasAnyAuthority(Scope.SUPER_ADMIN.name())
                                 .anyRequest().denyAll()
                 )
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

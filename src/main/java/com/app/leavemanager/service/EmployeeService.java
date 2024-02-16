@@ -74,8 +74,6 @@ public class EmployeeService {
 
         Employee employee = employeeSpringRepository.findByUserEmail(currentUsername).orElseThrow();
         employee.update(
-                employeeDTO.getEmail(),
-                passwordEncoder.encode(employeeDTO.getPassword()),
                 employeeDTO.getFirstname(),
                 employeeDTO.getLastname(),
                 employeeDTO.getDateOfBirth(),

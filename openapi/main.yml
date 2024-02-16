@@ -281,7 +281,7 @@ paths:
       operationId: deleteHolidayById
       security:
         - oAuth:
-            - SUPER_ADMIN,ADMIN
+            - EMPLOYEE
       parameters:
         - name: holidayId
           in: path
@@ -386,7 +386,7 @@ paths:
       operationId: createHolidayType
       security:
         - oAuth:
-            - SUPER_ADMIN,ADMIN,EMPLOYEE
+            - SUPER_ADMIN
       requestBody:
         description: object that need to be use for create Holiday
         required: true
@@ -666,9 +666,6 @@ components:
           type: string
         period:
           $ref: '#/components/schemas/PeriodDTO'
-        dateOfBirth:
-          type: string
-          format: date
     RegistrationResponseDTO:
       type: object
       properties:
