@@ -1,0 +1,14 @@
+services:
+  db:
+    ports:
+      - 5432:5432
+    container_name: postgresql_container
+    image: postgres
+    environment:
+      - POSTGRES_DB=first_pgdb
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - /home/essoungou_wonga/H87/christian:/var/lib/postgresql/data
+    restart: always
+  backend:
