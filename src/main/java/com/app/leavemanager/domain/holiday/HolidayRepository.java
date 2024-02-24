@@ -40,4 +40,6 @@ public interface HolidayRepository {
     List<Holiday> findAllHolidayByStatusAndPeriodEndDateIsBefore(HolidayStatus status, LocalDate date);
 
     Notice save(Notice notice);
+
+    List<Holiday> findHolidayByEmployeeId(Long id);
 }

@@ -221,6 +221,25 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/HolidayDTO'
+  /holiday/my-holidays:
+    get:
+      tags:
+        - Holiday
+      summary: get all my Holidays
+      description: get all my Holidays
+      operationId: getAllMyHolidays
+      security:
+        - oAuth:
+            - EMPLOYEE,SUPER_ADMIN,ADMIN
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HolidayDTO'
   /holiday/{holidayId}:
     get:
       tags:

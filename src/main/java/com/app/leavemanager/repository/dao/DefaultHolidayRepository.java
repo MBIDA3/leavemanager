@@ -10,6 +10,7 @@ import com.app.leavemanager.repository.spring.HolidayConfigSpringRepository;
 import com.app.leavemanager.repository.spring.HolidaySpringRepository;
 import com.app.leavemanager.repository.spring.HolidayTypeSpringRepository;
 import com.app.leavemanager.repository.spring.NoticeSpringRepository;
+import com.leavemanager.openapi.model.HolidayDTO;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
@@ -102,5 +103,10 @@ public class DefaultHolidayRepository implements HolidayRepository {
     @Override
     public Notice save(Notice notice) {
         return noticeSpringRepository.save(notice);
+    }
+
+    @Override
+    public List<Holiday> findHolidayByEmployeeId(Long employeeId) {
+        return holidaySpringRepository.findAllByCreatedById(employeeId);
     }
 }

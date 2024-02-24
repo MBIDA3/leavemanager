@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.lang.constant.ConstantDesc;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -212,6 +213,15 @@ public class HolidayService {
     public List<NoticeDTO> getNoticesByHoliday(Long holidayId) {
         List<Notice> allNoticeByHolidayId = holidayRepository.findAllNoticeByHolidayId(holidayId);
         return allNoticeByHolidayId
+                .stream()
+                .map(holidayMapper::toDTO)
+                .toList();
+    }
+
+    @Transactional
+    public List<HolidayDTO> getAllMyHolidays(String currentUsername) {
+        Employee employee = getEmployeeByUsername(currentUsername);
+        return holidayRepository.findHolidayByEmployeeId(employee.getId())
                 .stream()
                 .map(holidayMapper::toDTO)
                 .toList();
