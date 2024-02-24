@@ -116,7 +116,6 @@ public class Employee {
                        String lastname,
                        LocalDate dateOfBirth,
                        EmployeeRepository employeeDAO) {
-
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
@@ -125,11 +124,6 @@ public class Employee {
                 .password(password)
                 .build();
         employeeDAO.save(this);
-    }
-
-    public void setUser(User user, EmployeeRepository employeeRepository) {
-        this.user = user;
-        employeeRepository.save(this);
     }
 
     public Employee createEmployee(String firstname,

@@ -714,6 +714,14 @@ components:
         isActivated:
           type: boolean
           description: the value is 'true' if the employee insert an existing email
+        scope:
+          $ref: '#/components/schemas/ScopeDTO'
+    ScopeDTO:
+      type: string
+      enum:
+        - EMPLOYEE
+        - ADMIN
+        - SUPER_ADMIN
     HolidayDTO:
       type: object
       properties:
